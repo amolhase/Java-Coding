@@ -13,7 +13,7 @@ public class MergeTwoLists {
 	public static void main(String[] args) {
 		
 		List<Integer> list1 = Arrays.asList(12,22,3,42,95,76);
-		List<Integer> list2 = Arrays.asList(24,59,62,72,87,29);
+		List<Integer> list2 = Arrays.asList(12,59,3,72,95,29);
 		
 		//Q. merge two lists using java 8 (duplicates are allowed)
 		
@@ -23,6 +23,8 @@ public class MergeTwoLists {
 		//Q. merge two lists using java 8 (duplicates are not allowed)
 		
 		Set<Integer> uniqueResult = Stream.concat(list1.stream(), list2.stream()).collect(Collectors.toSet());
+		List<Integer> distinctResult = result.stream().distinct().sorted().collect(Collectors.toList());
+		System.out.println("Distinct Result --> " + distinctResult);
 		System.out.println(uniqueResult);
 		
 		//Q. find largest number from list
