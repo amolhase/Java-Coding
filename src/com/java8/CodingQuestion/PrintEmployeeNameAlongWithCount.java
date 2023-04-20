@@ -1,6 +1,7 @@
 package com.java8.CodingQuestion;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,5 +24,20 @@ public class PrintEmployeeNameAlongWithCount {
 	    Map<String, Long> result = emp.stream()
 	    		.collect(Collectors.groupingBy(Employee::getName,Collectors.counting()));
 	    System.out.println(result);
+	    
+	    //second way
+	    Map<String, Integer> map = new HashMap<>();
+	    for(Employee e : emp) {
+	    	if(!map.containsKey(e.getName())) {
+	    		map.put(e.getName(), 1);
+	    	} else {
+	    		map.put(e.getName(), map.get(e.getName()) + 1);
+	    	}
+	    }
+	    
+	    Set<Map.Entry<String, Integer>> hmap = map.entrySet();
+	    for(Map.Entry<String, Integer> data : hmap) {
+	    	System.out.println(data.getKey() + " " + data.getValue());
+	    }
 	}
 }
