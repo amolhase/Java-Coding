@@ -104,7 +104,27 @@ public class Day1Main {
 	   Map<String, List<Employee>> employeeInEachDepartment = employeeList.stream()
 			   .collect(Collectors.groupingBy(Employee::getDepartment,Collectors.toList()));
 	   System.out.println("Employee In Each Department ");
+	   employeeInEachDepartment.forEach((e1,e2) -> {
+		   System.out.println("Employee of " + e1 + " department");
+		   e2.forEach(employee -> System.out.println(employee.getName()));
+	   });
 	   
+	// Query 13 : What is the average salary and total salary of the whole organization?
+	   Double averagingSalary = employeeList.stream().collect(Collectors.averagingDouble(Employee::getSalary));
+	   Double totalSalary = employeeList.stream().collect(Collectors.summingDouble(Employee::getSalary));
+	   System.out.println("Averaging salary of Organization is " + averagingSalary);
+	   System.out.println("Total salary of organiztion is " + totalSalary);
+	   
+	// Query 14 : Separate the employees who are younger or equal to 25 years from those employees who are older than 25 years.
+		List<Employee> employeeLessThan25Year = employeeList.stream()
+				.filter(employee -> employee.getAge()<=25).collect(Collectors.toList());
+		System.out.println("Employee whose age is less than 25 years ");
+		employeeLessThan25Year.forEach(emp -> System.out.println(emp.getName()));
+		
+		// Query 15 : Who is the oldest employee in the organization? What is his age and which department he belongs to?
+		Employee oldestEmployee = employeeList.stream().max(Comparator.comparingInt(Employee::getAge)).get();
+		System.out.println("OLdest Employee in the organization is " + oldestEmployee.getName() + 
+				" And his age is " + oldestEmployee.getAge());
 		
 	}
 	
