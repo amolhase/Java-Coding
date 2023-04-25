@@ -115,7 +115,7 @@ public class Day1Main {
 	   System.out.println("Averaging salary of Organization is " + averagingSalary);
 	   System.out.println("Total salary of organiztion is " + totalSalary);
 	   
-	// Query 14 : Separate the employees who are younger or equal to 25 years from those employees who are older than 25 years.
+	// Query 14 : Separate` the employees who are younger or equal to 25 years from those employees who are older than 25 years.
 		List<Employee> employeeLessThan25Year = employeeList.stream()
 				.filter(employee -> employee.getAge()<=25).collect(Collectors.toList());
 		System.out.println("Employee whose age is less than 25 years ");
